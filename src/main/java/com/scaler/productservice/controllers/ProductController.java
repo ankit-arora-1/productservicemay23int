@@ -64,7 +64,8 @@ public class ProductController {
     }
 
 
-    public void partialUpdateProduct() {
+    @PatchMapping("/product/{id}")
+    public void partialUpdateProduct(@PathVariable("id") Long id, @RequestBody ProductRequestDto requestDto) {
 
     }
 
