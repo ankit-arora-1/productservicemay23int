@@ -82,7 +82,8 @@ public class ProductDBService implements ProductService {
         if(categoryOptional.isEmpty()) {
             Category category = new Category();
             category.setName(categoryName);
-            return categoryRepository.save(category);
+            return category;
+            // return categoryRepository.save(category); TODO: Uncomment this
         }
 
         return categoryOptional.get();
