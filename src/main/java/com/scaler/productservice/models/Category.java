@@ -4,10 +4,12 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 
 import java.util.List;
 
@@ -21,7 +23,6 @@ public class Category extends BaseModel {
 //    @OneToMany
 //    private List<Product> featuredProducts;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "category")
     private List<Product> products; // by default List is lazily loaded
 }

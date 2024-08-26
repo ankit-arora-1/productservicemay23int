@@ -57,5 +57,16 @@ class ProductServiceApplicationTests {
         System.out.println(category.get().getProducts());
     }
 
+    @Test
+    @Transactional
+    public void nplus1Problem() {
+        List<Category> categories = categoryRepository.findAll();
+        for(Category category: categories) {
+            for(Product product: category.getProducts()) {
+                System.out.println(product.getTitle());
+            }
+        }
+    }
+
 
 }
