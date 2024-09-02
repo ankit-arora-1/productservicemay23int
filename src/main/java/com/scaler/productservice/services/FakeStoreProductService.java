@@ -26,7 +26,8 @@ public class FakeStoreProductService implements ProductService {
 
     @Override
     public Product getProductById(Long id) throws ProductNotFoundException {
-        FakeStoreProductResponseDto responseDto = restTemplate.getForObject(
+        FakeStoreProductResponseDto responseDto =
+                restTemplate.getForObject(
                 "https://fakestoreapi.com/products/" + id,
                 FakeStoreProductResponseDto.class
         );
@@ -79,7 +80,8 @@ public class FakeStoreProductService implements ProductService {
         HttpEntity<Product> httpEntity =
                 new HttpEntity<>(product); // Add dto object here
 
-        ResponseEntity<FakeStoreProductResponseDto> responseEntity = restTemplate.exchange(
+        ResponseEntity<FakeStoreProductResponseDto> responseEntity =
+                restTemplate.exchange(
                 "https://fakestoreapi.com/products" + id,
                 HttpMethod.PATCH,
                 httpEntity, // use dto here
