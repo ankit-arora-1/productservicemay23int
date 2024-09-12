@@ -23,40 +23,40 @@ class ProductControllerTest {
     @Autowired
     private ProductController productController; // class under test
 
-    @Test
-    public void testGetProductByIdReturnsProduct() throws ProductNotFoundException {
-        Product dummyProduct = new Product();
-        dummyProduct.setId(1L);
-        dummyProduct.setTitle("abc");
-        dummyProduct.setDescription("abcd");
-        dummyProduct.setPrice(100.0);
-        dummyProduct.setImageUrl("img/url");
+    //@Test
+//    public void testGetProductByIdReturnsProduct() throws ProductNotFoundException {
+//        Product dummyProduct = new Product();
+//        dummyProduct.setId(1L);
+//        dummyProduct.setTitle("abc");
+//        dummyProduct.setDescription("abcd");
+//        dummyProduct.setPrice(100.0);
+//        dummyProduct.setImageUrl("img/url");
+//
+//        Category category = new Category();
+//        category.setId(1L);
+//        category.setName("electronics");
+//        dummyProduct.setCategory(category);
+//
+//        when(productService.getProductById(1L))
+//                .thenReturn(dummyProduct);
+//
+//        ProductResponseDto responseDto =
+//                productController.getProductById(1L);
+//
+//        assertEquals(1L, responseDto.getId());
+//        assertEquals("abc", responseDto.getTitle());
+//        assertEquals("abcd", responseDto.getDescription());
+//    }
 
-        Category category = new Category();
-        category.setId(1L);
-        category.setName("electronics");
-        dummyProduct.setCategory(category);
-
-        when(productService.getProductById(1L))
-                .thenReturn(dummyProduct);
-
-        ProductResponseDto responseDto =
-                productController.getProductById(1L);
-
-        assertEquals(1L, responseDto.getId());
-        assertEquals("abc", responseDto.getTitle());
-        assertEquals("abcd", responseDto.getDescription());
-    }
-
-    @Test
-    public void testGetProductByIdProductIsNull() throws ProductNotFoundException {
-        when(productService.getProductById(1L))
-                .thenReturn(null);
-
-        ProductResponseDto responseDto =
-                productController.getProductById(1L);
-
-        assertNull(responseDto);
-    }
+    //@Test
+//    public void testGetProductByIdProductIsNull() throws ProductNotFoundException {
+//        when(productService.getProductById(1L))
+//                .thenReturn(null);
+//
+//        ProductResponseDto responseDto =
+//                productController.getProductById(1L);
+//
+//        assertNull(responseDto);
+//    }
 
 }

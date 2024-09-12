@@ -1,9 +1,8 @@
 package com.scaler.productservice.controllers;
 
 import com.scaler.productservice.ProductNotFoundException;
-import com.scaler.productservice.dtos.ErrorDto;
-import com.scaler.productservice.dtos.ProductRequestDto;
-import com.scaler.productservice.dtos.ProductResponseDto;
+import com.scaler.productservice.commons.AuthenticationCommons;
+import com.scaler.productservice.dtos.*;
 import com.scaler.productservice.models.Product;
 import com.scaler.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +19,24 @@ import java.util.Objects;
 @RestController
 public class ProductController {
     private ProductService productService;
+    private AuthenticationCommons authenticationCommons;
 
     @Autowired
-    public ProductController(@Qualifier("productDbService") ProductService productService) {
+    public ProductController(@Qualifier("fakeStoreService") ProductService productService,
+                             AuthenticationCommons authenticationCommons) {
         this.productService = productService;
+        this.authenticationCommons = authenticationCommons;
     }
 
 
     @GetMapping("/product/{id}")
-    public ProductResponseDto getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
+    public ProductResponseDto getProductById(@PathVariable("id") Long id, @RequestHeader("Authorization") String token) throws ProductNotFoundException {
+        UserDto userDto = authenticationCommons
+                .validateToken(token);
+        if(userDto == null) {
+            throw new RuntimeException("Invalid Token"); // TODO: Create exception for this
+        }
+
         Product product = productService.getProductById(id);
         return ProductResponseDto.from(product);
     }
