@@ -1,5 +1,6 @@
 package com.scaler.productservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,5 +25,6 @@ public class Category extends BaseModel {
 //    private List<Product> featuredProducts;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Product> products; // by default List is lazily loaded
 }

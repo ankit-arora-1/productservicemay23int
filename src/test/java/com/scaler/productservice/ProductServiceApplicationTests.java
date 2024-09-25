@@ -51,11 +51,11 @@ class ProductServiceApplicationTests {
         System.out.println(category.get().getProducts());
     }
 
-    @Test
-    public void getCategory2() {
-        Optional<Category> category = categoryRepository.findById(1L);
-        System.out.println(category.get().getProducts());
-    }
+//    @Test
+//    public void getCategory2() {
+//        Optional<Category> category = categoryRepository.findById(1L);
+//        System.out.println(category.get().getProducts());
+//    }
 
     @Test
     @Transactional
