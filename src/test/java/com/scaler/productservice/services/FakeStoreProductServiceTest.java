@@ -20,7 +20,7 @@ public class FakeStoreProductServiceTest {
             Mockito.mock(RestTemplate.class);
 
     private FakeStoreProductService fakeStoreProductService =
-            new FakeStoreProductService(restTemplate);
+            new FakeStoreProductService(restTemplate, null);
 
     @Test
     public void testGetProductByIdApiReturnsCorrectResponse() throws ProductNotFoundException {

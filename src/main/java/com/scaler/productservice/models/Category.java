@@ -12,12 +12,13 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Category extends BaseModel {
+public class Category extends BaseModel implements Serializable {
     private String name;
     private String description;
 
