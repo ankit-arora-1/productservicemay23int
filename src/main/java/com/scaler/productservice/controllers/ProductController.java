@@ -31,11 +31,11 @@ public class ProductController {
 
     @GetMapping("/product/{id}")
     public ProductResponseDto getProductById(@PathVariable("id") Long id, @RequestHeader("Authorization") String token) throws ProductNotFoundException {
-        UserDto userDto = authenticationCommons
-                .validateToken(token);
-        if(userDto == null) {
-            throw new RuntimeException("Invalid Token"); // TODO: Create exception for this
-        }
+//        UserDto userDto = authenticationCommons
+//                .validateToken(token);
+//        if(userDto == null) {
+//            throw new RuntimeException("Invalid Token"); // TODO: Create exception for this
+//        }
 
         Product product = productService.getProductById(id);
         return ProductResponseDto.from(product);
